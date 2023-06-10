@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
 //to post data
 router.post("/", (req, res) => {
   groceriesList.push(req.body);
-  res.sendStatus(201).send("created");
+  res.sendStatus(201);
 });
 
 // to get single item with req.params
