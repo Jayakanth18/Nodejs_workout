@@ -37,8 +37,11 @@ router.get("/:item", (req, res) => {
   let newList = groceriesList.find(
     (el) => el.item.toLowerCase() === item.toLowerCase()
   );
-  res.send(newList);
+  if (newList) {
+    res.send(newList);
+  } else {
+    res.status(404).send("<h1>Not Found</h1>");
+  }
 });
-
 
 module.exports = router;

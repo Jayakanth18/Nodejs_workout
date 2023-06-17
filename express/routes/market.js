@@ -40,7 +40,12 @@ router.get("/:store", (req, res) => {
   let singleStore = marketsList.find(
     (s) => s.store.toLowerCase() === store.toLowerCase()
   );
-  res.send(singleStore);
+  if (singleStore) {
+    res.send(singleStore)
+  } else {
+    res.status(404).send("<h1>Not Found</h1>")
+  }
+  ;
 });
 
 module.exports = router;
