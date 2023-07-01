@@ -23,6 +23,7 @@ let groceriesList = [
 
 // to fetch data
 router.get("/", (req, res) => {
+  console.log(req.query)
   res.send(groceriesList);
 });
 //to post data
