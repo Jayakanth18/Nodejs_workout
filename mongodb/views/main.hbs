@@ -7,5 +7,56 @@
   <body>
     <h1>MongoDB CRUD</h1>
     {{message}}
+
+    <br />
+
+    {{#if edit_id}}
+      <h2>Update</h2>
+      <form action="/update_data/{{edit_id}}" method="post">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value="{{edit_data.title}}"
+        />
+        <label for="author">Author</label>
+        <input
+          type="text"
+          name="author"
+          id="author"
+          value="{{edit_data.author}}"
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <br /><br />
+
+    {{else}}
+
+      <h2>Create</h2>
+      <form action="/store_data" method="post">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" />
+        <button type="submit">Submit</button>
+      </form>
+      <br /><br />
+    {{/if}}
+
+    <ul>
+      {{#each data}}
+        <li>
+          {{this.title}}
+          -
+          {{this.author}}
+          <a href="/?edit_id={{this._id}}">Edit</a>
+          <a
+            href="/?delete_id={{this._id}}"
+            onclick="return confirm('are you sure want to this?')"
+          >Delete</a>
+        </li>
+      {{/each}}
+    </ul>
   </body>
 </html>
